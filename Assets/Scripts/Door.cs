@@ -1,17 +1,18 @@
 /*
 * Author: Sheryn Batrisyia
 * Date: 13/06/2026
-* Description: Displays interaction prompts when the player looks at a door
+* Description: Displays interaction prompts, opens and closes doors smoothly and locks the staff room door until all collectibles are collected
 */
+
 using UnityEngine;
 
 /// <summary>
-/// Handles door interaction prompts when the player hovers over the door.
+/// Handles door prompts, smooth door movement, and locked door conditions.
 /// </summary>
 public class Door : MonoBehaviour
 {
     /// <summary>
-    /// Stores the current state of the door.
+    /// Stores whether the door is currently open.
     /// </summary>
     bool doorOpen = false;
 
@@ -21,38 +22,99 @@ public class Door : MonoBehaviour
     [SerializeField] float openAngle = 90f;
 
     /// <summary>
+    /// Controls how fast the door opens and closes.
+    /// </summary>
+    [SerializeField] float doorSpeed = 3f;
+
+    /// <summary>
     /// Reference to the player.
     /// </summary>
     [SerializeField] Transform player;
 
     /// <summary>
-    /// Reference to the door animator.
+    /// Sets whether this door is the staff room door.
     /// </summary>
-    [SerializeField] Animator doorAnimator;
+    [SerializeField] bool isStaffRoomDoor;
 
     /// <summary>
-    /// Displays the door interaction UI when the player looks at the door.
+    /// Sets whether this door is the escape door.
+    /// </summary>
+    [SerializeField] bool isEscapeDoor;
+
+    /// <summary>
+    /// Stores the closed rotation of the door.
+    /// </summary>
+    Quaternion closedRotation;
+
+    /// <summary>
+    /// Stores the opened rotation of the door.
+    /// </summary>
+    Quaternion openedRotation;
+
+    /// <summary>
+    /// Sets the starting open and closed rotations.
+    /// </summary>
+    void Start()
+    {
+        closedRotation = transform.localRotation;
+        openedRotation = Quaternion.Euler(transform.localEulerAngles.x, transform.localEulerAngles.y + openAngle, transform.localEulerAngles.z);
+    }
+
+    /// <summary>
+    /// Smoothly opens or closes the door and closes it automatically when the player moves away.
+    /// </summary>
+    void Update()
+    {
+        if (doorOpen == true)
+        {
+            transform.localRotation = Quaternion.Slerp(transform.localRotation, openedRotation, doorSpeed * Time.deltaTime);
+
+            float distance = Vector3.Distance(transform.position, player.position);
+
+            if (distance > 3f)
+            {
+                doorOpen = false;
+            }
+        }
+        else
+        {
+            transform.localRotation = Quaternion.Slerp(transform.localRotation, closedRotation, doorSpeed * Time.deltaTime);
+        }
+    }
+
+    /// <summary>
+    /// Displays the door interaction UI and allows the player to open unlocked doors.
     /// </summary>
     void OnMouseOver()
     {
-        if(PlayerCasting.distanceFromTarget < 10)
+        if (PlayerCasting.distanceFromTarget < 10)
         {
-            UIController.actionText = "Open Door";
+            if (isStaffRoomDoor == true && CollectibleManager.collectedItems < 4)
+            {
+                UIController.actionText = "Staff Room Locked";
+                UIController.commandText = "Collect 4 Items First";
+                UIController.uiActive = true;
+                UIController.showE = false;
+                return;
+            }
+
+            if (isEscapeDoor == true && MasterKey.hasMasterKey == false)
+            {
+                UIController.actionText = "Escape Door Locked";
+                UIController.commandText = "Find the Master Key";
+                UIController.showE = false;
+                UIController.uiActive = true;
+                return;
+            }
+
+            UIController.showE = true;
+            UIController.actionText = "Door Open";
             UIController.commandText = "Open";
             UIController.uiActive = true;
 
             if (Input.GetKeyDown(KeyCode.E))
             {
-                if (doorOpen == false)
-                {
-                    transform.localRotation = Quaternion.Euler(0, openAngle, 0);
-                    doorOpen = true;
-                }
-                else
-                {
-                    transform.localRotation = Quaternion.Euler(0, 0, 0);
-                    doorOpen = false;
-                }
+                doorOpen = !doorOpen;
             }
         }
         else
@@ -64,29 +126,12 @@ public class Door : MonoBehaviour
     }
 
     /// <summary>
-    /// Hides the door interaction UI when the player stops looking at the door.
+    /// Hides the door prompt when the player stops looking at the door.
     /// </summary>
     void OnMouseExit()
     {
         UIController.actionText = "";
         UIController.commandText = "";
         UIController.uiActive = false;
-    }
-
-    /// <summary>
-    /// Automatically closes the door when the player moves away.
-    /// </summary>
-    void Update()
-    {
-        if (doorOpen == true)
-        {
-            float distance = Vector3.Distance(transform.position, player.position);
-
-            if (distance > 3f)
-            {
-                transform.localRotation = Quaternion.Euler(0, 0, 0);
-                doorOpen = false;
-            }
-        }
     }
 }

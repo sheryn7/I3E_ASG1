@@ -31,6 +31,17 @@ public class CollectibleManager : MonoBehaviour
     /// </summary>
     void Update()
     {
-        collectibleText.text = "Items Collected: " + collectedItems + "/4";
+        if (MasterKey.hasMasterKey)
+        {
+            collectibleText.text = "Escape Door Unlocked!";
+        }
+        else if (collectedItems >= 4)
+        {
+            collectibleText.text = "Find the Master Key";
+        }
+        else
+        {
+            collectibleText.text = "Items Collected: " + collectedItems + "/4";
+        }
     }
 }

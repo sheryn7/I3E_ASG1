@@ -26,6 +26,11 @@ public class UIController : MonoBehaviour
     public static bool uiActive;
 
     /// <summary>
+    /// Determines whether the interaction prompt should display the E key.
+    /// </summary>
+    public static bool showE = true;
+
+    /// <summary>
     /// Reference to the action text UI element.
     /// </summary>
     [SerializeField] GameObject actionBox;
@@ -52,8 +57,15 @@ public class UIController : MonoBehaviour
             interactCross.SetActive(true);
             actionBox.GetComponent<TMPro.TMP_Text>().text = actionText;
 
-            // Display interaction key and command text
-            commandBox.GetComponent<TMPro.TMP_Text>().text = "[E] " + commandText;  //Prompt E key + the command text
+            // Display command text
+            if (showE)
+            {
+                commandBox.GetComponent<TMPro.TMP_Text>().text = "[E] " + commandText;
+            }
+            else
+            {
+                commandBox.GetComponent<TMPro.TMP_Text>().text = commandText;
+            }
         }
         else    // "If UI is inactive, do this"
         {
