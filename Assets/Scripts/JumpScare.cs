@@ -54,6 +54,13 @@ public class JumpScare : MonoBehaviour
             panelHolder.SetActive(false);
             monster.SetActive(true);
 
+            PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
+
+            if (playerHealth != null)
+            {
+                playerHealth.TakeDamage(999f);
+            }
+
             StartCoroutine(RespawnPlayer());
         }
     }
@@ -76,6 +83,14 @@ public class JumpScare : MonoBehaviour
         player.eulerAngles = new Vector3(0, 180, 0);
         controller.enabled = true;
 
+        PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
+
+        if (playerHealth != null)
+        {
+            playerHealth.ResetHealth();
+        }
+
+        monster.SetActive(false);
         deathText.SetActive(false);
     }
 }

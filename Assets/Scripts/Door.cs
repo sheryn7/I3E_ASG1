@@ -87,7 +87,7 @@ public class Door : MonoBehaviour
     /// </summary>
     void OnMouseOver()
     {
-        if (PlayerCasting.distanceFromTarget < 10)
+        if (PlayerCasting.distanceFromTarget < 5)
         {
             if (isStaffRoomDoor == true && CollectibleManager.collectedItems < 4)
             {
