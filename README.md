@@ -188,7 +188,6 @@ Stepping into the puddle hazard will:
 
 ### Audio
 
-- Background Music – *[Insert Source]*
 - PickUp SFX by <a href="https://pixabay.com/users/freesound_community-46691455/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=37089">freesound_community</a> from <a href="https://pixabay.com/sound-effects//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=37089">Pixabay</a>
 - Open Door SFX by <a href="https://pixabay.com/users/dragon-studio-38165424/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=454245">DRAGON-STUDIO</a> from <a href="https://pixabay.com/sound-effects//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=454245">Pixabay</a>
 - Close Door SFX by <a href="https://pixabay.com/users/freesound_community-46691455/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=79144">freesound_community</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=79144">Pixabay</a>
@@ -218,4 +217,4 @@ Stepping into the puddle hazard will:
 
 **Sheryn Batrisyia**
 
-Created for **Interactive 3D Environment Assignment 1**.
+Created for **Interactive 3D Experience Assignment 1**.
