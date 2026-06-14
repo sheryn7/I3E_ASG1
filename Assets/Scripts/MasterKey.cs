@@ -11,6 +11,12 @@ using UnityEngine;
 /// </summary>
 public class MasterKey : MonoBehaviour
 {
+
+    /// <summary>
+    /// Audio source played when the Master Key is collected.
+    /// </summary>
+    [SerializeField] AudioSource keyPickupSound;
+
     /// <summary>
     /// Stores whether the player has collected the Master Key.
     /// </summary>
@@ -31,6 +37,8 @@ public class MasterKey : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 hasMasterKey = true;
+
+                keyPickupSound.Play();
 
                 UIController.actionText = "";
                 UIController.commandText = "";

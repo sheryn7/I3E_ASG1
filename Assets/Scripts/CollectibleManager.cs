@@ -12,6 +12,16 @@ using TMPro;
 /// </summary>
 public class CollectibleManager : MonoBehaviour
 {
+    /// <summary>
+    /// Audio source played when a collectible is collected.
+    /// </summary>
+    [SerializeField] AudioSource collectSound;
+
+    /// <summary>
+    /// Audio source played when all collectibles have been collected.
+    /// </summary>
+    [SerializeField] AudioSource successSound;
+
     void Start()
     {
         Debug.Log("Collectible Manager Running");
@@ -43,5 +53,21 @@ public class CollectibleManager : MonoBehaviour
         {
             collectibleText.text = "Items Collected: " + collectedItems + "/4";
         }
+    }
+
+    /// <summary>
+    /// Plays the collectible pickup sound.
+    /// </summary>
+    public void PlayCollectSound()
+    {
+        collectSound.Play();
+    }
+
+    /// <summary>
+    /// Plays the success sound when all collectibles have been collected.
+    /// </summary>
+    public void PlaySuccessSound()
+    {
+        successSound.Play();
     }
 }

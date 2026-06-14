@@ -47,6 +47,21 @@ public class Door : MonoBehaviour
     [SerializeField] GameObject endingPanel;
 
     /// <summary>
+    /// Audio source played when the door opens.
+    /// </summary>
+    [SerializeField] AudioSource openSound;
+
+    /// <summary>
+    /// Audio source played when the door closes.
+    /// </summary>
+    [SerializeField] AudioSource closeSound;
+
+    /// <summary>
+    /// Audio source played when the player escapes.
+    /// </summary>
+    [SerializeField] AudioSource successSound;
+
+    /// <summary>
     /// Stores the closed rotation of the door.
     /// </summary>
     Quaternion closedRotation;
@@ -78,6 +93,7 @@ public class Door : MonoBehaviour
 
             if (distance > 3f)
             {
+                closeSound.Play();
                 doorOpen = false;
             }
         }
@@ -121,15 +137,24 @@ public class Door : MonoBehaviour
             {
                 if (isEscapeDoor)
                 {
-                    endingPanel.SetActive(true);
+                    successSound.Play();
 
-                    Cursor.lockState = CursorLockMode.None;
-                    Cursor.visible = true;
+                    Invoke(nameof(ShowEndingScreen), 1f);
+
 
                     return;
                 }
 
-                doorOpen = !doorOpen;
+                if (doorOpen == false)
+                {
+                    openSound.Play();
+                    doorOpen = true;
+                }
+                else
+                {
+                    closeSound.Play();
+                    doorOpen = false;
+                }
             }
         }
         else
@@ -148,5 +173,16 @@ public class Door : MonoBehaviour
         UIController.actionText = "";
         UIController.commandText = "";
         UIController.uiActive = false;
+    }
+
+    /// <summary>
+    /// Displays the ending screen after the escape sound has played.
+    /// </summary>
+    void ShowEndingScreen()
+    {
+        endingPanel.SetActive(true);
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 }

@@ -37,6 +37,11 @@ public class JumpScare : MonoBehaviour
     [SerializeField] GameObject deathText;
 
     /// <summary>
+    /// Audio source played when the jump scare is triggered.
+    /// </summary>
+    [SerializeField] AudioSource jumpScareSound;
+
+    /// <summary>
     /// Prevents the jump scare from triggering multiple times.
     /// </summary>
     bool hasTriggered = false;
@@ -53,6 +58,8 @@ public class JumpScare : MonoBehaviour
 
             panelHolder.SetActive(false);
             monster.SetActive(true);
+
+            jumpScareSound.Play();
 
             PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
 

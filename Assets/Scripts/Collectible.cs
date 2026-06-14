@@ -35,6 +35,13 @@ public class Collectible : MonoBehaviour
 
                 CollectibleManager.collectedItems++;
 
+                if (CollectibleManager.collectedItems == 4)
+                {
+                    FindFirstObjectByType<CollectibleManager>().PlaySuccessSound();
+                }
+
+                FindFirstObjectByType<CollectibleManager>().PlayCollectSound();
+
                 Destroy(gameObject);
             }
         }

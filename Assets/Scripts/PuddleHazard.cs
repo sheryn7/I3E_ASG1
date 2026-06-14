@@ -22,6 +22,11 @@ public class PuddleHazard : MonoBehaviour
     [SerializeField] GameObject warningPanel;
 
     /// <summary>
+    /// Audio source played while the player is inside the puddle.
+    /// </summary>
+    [SerializeField] AudioSource puddleSound;
+
+    /// <summary>
     /// Displays the warning panel when the player enters the puddle.
     /// </summary>
     void OnTriggerEnter(Collider other)
@@ -29,6 +34,7 @@ public class PuddleHazard : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             warningPanel.SetActive(true);
+            puddleSound.Play();
         }
     }
 
@@ -56,6 +62,7 @@ public class PuddleHazard : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             warningPanel.SetActive(false);
+            puddleSound.Stop();
         }
     }
 }

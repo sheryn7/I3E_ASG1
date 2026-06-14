@@ -27,11 +27,16 @@ public class Locker : MonoBehaviour
     [SerializeField] GameObject hiddenKey;
 
     /// <summary>
+    /// Audio source played when the locker is opened.
+    /// </summary>
+    [SerializeField] AudioSource lockerOpenSound;
+
+    /// <summary>
     /// Displays the locker interaction prompt and opens the locker.
     /// </summary>
     void OnMouseOver()
     {
-        if (PlayerCasting.distanceFromTarget < 10)
+        if (PlayerCasting.distanceFromTarget < 5)
         {
             UIController.actionText = "Open Locker";
             UIController.commandText = "Open";
@@ -41,6 +46,7 @@ public class Locker : MonoBehaviour
             {
                 transform.localRotation = Quaternion.Euler(0, openAngle, 0);
 
+                lockerOpenSound.Play();
                 lockerOpen = true;
 
                 hiddenKey.SetActive(true);

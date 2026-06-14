@@ -183,7 +183,22 @@ Stepping into the puddle hazard will:
 ### Audio
 
 - Background Music – *[Insert Source]*
-- Sound Effects – *[Insert Source]*
+- PickUp SFX by <a href="https://pixabay.com/users/freesound_community-46691455/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=37089">freesound_community</a> from <a href="https://pixabay.com/sound-effects//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=37089">Pixabay</a>
+- Open Door SFX by <a href="https://pixabay.com/users/dragon-studio-38165424/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=454245">DRAGON-STUDIO</a> from <a href="https://pixabay.com/sound-effects//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=454245">Pixabay</a>
+- Close Door SFX by <a href="https://pixabay.com/users/freesound_community-46691455/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=79144">freesound_community</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=79144">Pixabay</a>
+- PickUp Key by <a href="https://pixabay.com/users/litupsubway-55283183/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=522219">litupsubway</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=522219">Pixabay</a>
+- Jumpscare by <a href="https://pixabay.com/users/dubnium-46834607/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=258269">d d</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=258269">Pixabay</a>
+- Locker Open by <a href="https://pixabay.com/users/freesound_community-46691455/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=101487">freesound_community</a> from <a href="https://pixabay.com/sound-effects//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=101487">Pixabay</a>
+- Damage Taken by <a href="https://pixabay.com/users/fxprosound-41783058/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=248606">Robert Gacek</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=248606">Pixabay</a>
+
+### Development Assistance
+
+- OpenAI ChatGPT was used as a learning and development aid for:
+- Unity scripting guidance
+- C# debugging and troubleshooting
+- XML documentation comments
+- README documentation preparation
+- General game development consultation
 
 ### Software Used
 
