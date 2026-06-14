@@ -42,6 +42,11 @@ public class Door : MonoBehaviour
     [SerializeField] bool isEscapeDoor;
 
     /// <summary>
+    /// Reference to the ending panel.
+    /// </summary>
+    [SerializeField] GameObject endingPanel;
+
+    /// <summary>
     /// Stores the closed rotation of the door.
     /// </summary>
     Quaternion closedRotation;
@@ -114,6 +119,16 @@ public class Door : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.E))
             {
+                if (isEscapeDoor)
+                {
+                    endingPanel.SetActive(true);
+
+                    Cursor.lockState = CursorLockMode.None;
+                    Cursor.visible = true;
+
+                    return;
+                }
+
                 doorOpen = !doorOpen;
             }
         }
