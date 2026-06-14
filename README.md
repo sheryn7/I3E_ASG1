@@ -2,6 +2,12 @@
 
 # Escape the Abandoned School
 
+## GitHub Repository
+
+https://github.com/sheryn7/I3E_ASG1
+
+---
+
 ## Overview
 
 **Escape the Abandoned School** is a first-person horror puzzle game where players must explore a deserted school, collect important items, unlock restricted areas, survive hazards and obtain the Master Key in order to escape.
